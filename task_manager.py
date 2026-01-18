@@ -1,4 +1,5 @@
 import json
+import logging
 
 class Task:
 
@@ -18,6 +19,7 @@ class TaskManager:
     def __init__(self):
         self._tasks = []
         self._next_id = 1
+        logging.basicConfig(level=logging.INFO)
         self.load_tasks()
         
 
@@ -30,10 +32,10 @@ class TaskManager:
 
     def list_task(self):
         if not self._tasks:
-            print("No hay tareas que mostrar")
+            logging.info("No hay tareas que mostrar")
         else:
             for task in self._tasks:
-                print(task)
+                logging.info(str(task))
 
 
     def complete_task(self, id):
